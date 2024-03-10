@@ -34,12 +34,21 @@ contract AttestationService {
         address subject;
     }
 
+	struct Recipe {
+        uint256 id;
+        string name;
+        uint256[] schemaIds;
+    }
+
     Schema[] private schemas;
     Attestation[] private attestations;
+	Recipe[] private recipes;
     mapping(uint256 => SchemaProperty[]) public schemaProperties;
 
     event SchemaRegistered(uint256 schemaId, string name, address creator);
     event AttestationRegistered(uint256 attestationId, uint256 schemaId, address issuer, address subject);
+	event RecipeRegistered(uint256 recipeId, string name);
+
 
     // Register a new schema with multiple properties
      function registerSchema(string calldata name, SchemaProperty[] calldata properties) external {
@@ -59,9 +68,21 @@ contract AttestationService {
         require(schemaId < schemas.length, "Schema does not exist");
         
         uint256 attestationId = attestations.length;
+		//TODO: Add validation check for the data
         attestations.push(Attestation(attestationId, schemaId, data, msg.sender, subject));
 
         emit AttestationRegistered(attestationId, schemaId, msg.sender, subject);
+    }
+
+	// Register a new recipe
+    function registerRecipe(string calldata name, uint256[] calldata schemaIds) external {
+        uint256 recipeId = recipes.length;
+        for(uint256 i = 0; i < schemaIds.length; i++) {
+            require(schemaIds[i] < schemas.length, "Schema does not exist");
+        }
+        recipes.push(Recipe(recipeId, name, schemaIds));
+
+        emit RecipeRegistered(recipeId, name);
     }
 
     // Get a schema by ID
