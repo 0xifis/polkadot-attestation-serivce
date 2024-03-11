@@ -33,6 +33,14 @@ import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
 /* eslint-disable prettier/prettier */
 
+/* eslint-disable prettier/prettier */
+
+/* eslint-disable prettier/prettier */
+
+/* eslint-disable prettier/prettier */
+
+/* eslint-disable prettier/prettier */
+
 type HeaderMenuLink = {
   label: string;
   href: string;
