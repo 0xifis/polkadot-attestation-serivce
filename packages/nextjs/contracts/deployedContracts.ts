@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   1287: {
     AttestationService: {
-      address: "0x7cC486d012d60FAee85d0cE6037f439174b528D6",
+      address: "0x9C80154e7B38D75EDf360fC1F6b3e65952B2a61e",
       abi: [
         {
           anonymous: false,
@@ -36,8 +36,33 @@ const deployedContracts = {
               name: "subject",
               type: "address",
             },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "network",
+              type: "string",
+            },
           ],
           name: "AttestationRegistered",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "recipeId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+          ],
+          name: "RecipeRegistered",
           type: "event",
         },
         {
@@ -101,6 +126,11 @@ const deployedContracts = {
                   internalType: "address",
                   name: "subject",
                   type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "network",
+                  type: "string",
                 },
               ],
               internalType: "struct AttestationService.Attestation",
@@ -190,8 +220,31 @@ const deployedContracts = {
               name: "subject",
               type: "address",
             },
+            {
+              internalType: "string",
+              name: "network",
+              type: "string",
+            },
           ],
           name: "registerAttestation",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "uint256[]",
+              name: "schemaIds",
+              type: "uint256[]",
+            },
+          ],
+          name: "registerRecipe",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",

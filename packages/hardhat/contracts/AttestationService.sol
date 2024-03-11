@@ -32,6 +32,7 @@ contract AttestationService {
         string data; // JSON string for simplicity
         address issuer;
         address subject;
+        string network;
     }
 
 	struct Recipe {
@@ -46,7 +47,7 @@ contract AttestationService {
     mapping(uint256 => SchemaProperty[]) public schemaProperties;
 
     event SchemaRegistered(uint256 schemaId, string name, address creator);
-    event AttestationRegistered(uint256 attestationId, uint256 schemaId, address issuer, address subject);
+    event AttestationRegistered(uint256 attestationId, uint256 schemaId, address issuer, address subject, string network);
 	event RecipeRegistered(uint256 recipeId, string name);
 
 
@@ -64,14 +65,14 @@ contract AttestationService {
     }
 
     // Register a new attestation
-    function registerAttestation(uint256 schemaId, string memory data, address subject) public {
+    function registerAttestation(uint256 schemaId, string memory data, address subject, string memory network) public {
         require(schemaId < schemas.length, "Schema does not exist");
         
         uint256 attestationId = attestations.length;
 		//TODO: Add validation check for the data
-        attestations.push(Attestation(attestationId, schemaId, data, msg.sender, subject));
+        attestations.push(Attestation(attestationId, schemaId, data, msg.sender, subject, network));
 
-        emit AttestationRegistered(attestationId, schemaId, msg.sender, subject);
+        emit AttestationRegistered(attestationId, schemaId, msg.sender, subject, network);
     }
 
 	// Register a new recipe
