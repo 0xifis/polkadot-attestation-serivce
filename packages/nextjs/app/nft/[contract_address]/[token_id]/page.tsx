@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { Core } from "@quicknode/sdk";
 import NFTDetailPage from "components/NftDetailPage";
 
-const NFTPage = () => {
-  const router = useRouter();
-  const { contract_address, token_id } = router.query;
+const NFTPage = ({ params }: { params: { contract_address: string; token_id: string } }) => {
+  // const router = useRouter();
+  const { contract_address, token_id } = params;
+  console.log(params);
   const [nft, setNft] = useState<any>(null);
 
   useEffect(() => {
