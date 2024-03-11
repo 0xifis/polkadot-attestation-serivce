@@ -17,7 +17,7 @@ function NFTDetailPage({ nft }: { nft: any }) {
   const recipes = processRecipes(data["attestations"]);
 
   return (
-    <div className="flex w-full flex-col md:flex-row">
+    <div className="flex w-full mx-auto max-w-7xl mt-12 p-6 bg-primary dark:bg-black rounded-lg overflow-hidden flex-col md:flex-row">
       <div className="md:w-1/3">
         <h1 className="mb-4 text-2xl font-bold text-neutral-600 dark:text-white">{nft.name}</h1>
         <CardContainer className="mb-10">
@@ -34,7 +34,7 @@ function NFTDetailPage({ nft }: { nft: any }) {
           </CardBody>
         </CardContainer>
 
-        <p className="h-60 overflow-x-hidden overflow-y-scroll text-justify text-sm font-light text-neutral-600 dark:text-neutral-500">
+        <p className="h-60 overflow-x-hidden overflow-y-scroll text-justify text-sm font-light text-white">
           {nft.description}
         </p>
       </div>
@@ -64,7 +64,8 @@ function NFTDetailPage({ nft }: { nft: any }) {
         <h2 className="my-4 text-xl font-bold text-neutral-600 dark:text-white">Requests for Attestation</h2>
         <RequestsTable recipientFilter={nft.collectionAddress} tokenIdFilter={nft.collectionTokenId} />
         <p className="text-sm mt-24 word-wrap my-4 text-neutral-600 dark:text-white">
-          Contract Address: {nft.collectionAddress} - {nft.collectionTokenId}
+          Contract Address: {nft.collectionAddress} - {nft.collectionTokenId} <br />
+          Network: Ethereum Mainnet
         </p>
       </div>
     </div>
