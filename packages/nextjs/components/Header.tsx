@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 "use client";
 
 import React, { useCallback, useRef, useState } from "react";
@@ -7,6 +8,10 @@ import { usePathname } from "next/navigation";
 import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
+
+/* eslint-disable prettier/prettier */
+
+/* eslint-disable prettier/prettier */
 
 type HeaderMenuLink = {
   label: string;
@@ -65,7 +70,7 @@ export const Header = () => {
 
   return (
     <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
-      <div className="navbar-start w-auto lg:w-1/2">
+      <div className="navbar-start w-auto lg:w-3/4">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
             tabIndex={0}
@@ -88,13 +93,30 @@ export const Header = () => {
             </ul>
           )}
         </div>
-        <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
+        <Link href="/" passHref className="hidden md:flex items-center gap-2 ml-4 mr-6 shrink-0">
           <div className="flex relative w-10 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
+            <Image alt="Dolphin Protocol logo" className="cursor-pointer" fill src="/images/logo.png" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">Scaffold-ETH</span>
-            <span className="text-xs">Ethereum dev stack</span>
+            <span className="font-bold leading-tight">Dolphin Protocol</span>
+            <span className="text-xs">
+              Interoperable Attestation Service built on
+              <div className="flex flex-row items-center">
+                <Image
+                  src="https://saxemberg.com/static/img/Polkadot_Logotype_color_fit.png"
+                  height="20"
+                  width="74"
+                  alt="Polkadot"
+                />
+                <span className="font-bold mx-1 text-xs">·</span>
+                <Image
+                  src="https://moonbeam.network/wp-content/uploads/2020/03/Moonbeam-Logo-Final-500px.png"
+                  height="20"
+                  width="74"
+                  alt="Polkadot"
+                />
+              </div>
+            </span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
