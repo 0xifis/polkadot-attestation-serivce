@@ -7,11 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "saxemberg.com",
-      },
-      {
-        protocol: "https",
-        hostname: "moonbeam.network",
+        hostname: "**",
       },
     ],
   },
