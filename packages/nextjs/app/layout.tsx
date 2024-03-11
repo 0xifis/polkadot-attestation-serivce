@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "@rainbow-me/rainbowkit/styles.css";
 import { Metadata } from "next";
+import { ApolloWrapper } from "~~/components/ApolloWrapper";
 import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithProviders";
 import { ThemeProvider } from "~~/components/ThemeProvider";
 import "~~/styles/globals.css";
@@ -48,9 +49,11 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <html suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider enableSystem>
-          <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
-        </ThemeProvider>
+        <ApolloWrapper>
+          <ThemeProvider enableSystem>
+            <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
+          </ThemeProvider>
+        </ApolloWrapper>
       </body>
     </html>
   );

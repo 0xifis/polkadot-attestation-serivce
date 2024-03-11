@@ -29,6 +29,7 @@ interface Recipe {
 }
 
 export const processRecipes = (recipes: Recipe[]): Recipe[] => {
+  console.log(recipes);
   return recipes.map(recipe => {
     let decodedData;
     try {
